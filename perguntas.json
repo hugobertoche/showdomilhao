@@ -1,0 +1,46 @@
+{
+    "perguntas": [
+        {
+            "texto": "Quem descobriu o Brasil?",
+            "respostas": [
+                {
+                    "certa": true,
+                    "texto": "Pedro Alvares Cabral"
+                },
+                {
+                    "certa": false,
+                    "texto": "Cristovao Colombo"
+                },
+                {
+                    "certa": false,
+                    "texto": "Dilma Roussef"
+                },
+                {
+                    "certa": false,
+                    "texto": "Louis Armstrong"
+                }
+            ]
+        },
+        {
+            "texto": "Quem descobriu o Brasil?",
+            "respostas": [
+                {
+                    "certa": true,
+                    "texto": "Pedro Alvares Cabral"
+                },
+                {
+                    "certa": false,
+                    "texto": "Cristovao Colombo"
+                },
+                {
+                    "certa": false,
+                    "texto": "Dilma Roussef"
+                },
+                {
+                    "certa": false,
+                    "texto": "Louis Armstrong"
+                }
+            ]
+        }
+    ]
+}

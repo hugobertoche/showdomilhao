@@ -7,6 +7,7 @@ package showdomilhao;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.ActionEvent;
@@ -18,6 +19,8 @@ import javax.swing.JApplet;
 import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import showdomilhao.DAO.PerguntaDAO;
+import showdomilhao.models.Pergunta;
 
 /**
  *
@@ -33,6 +36,9 @@ public class Showdomilhao extends JApplet {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        ArrayList<Pergunta> perguntas;
+        perguntas = new PerguntaDAO().read();
+        System.out.println(perguntas);
         SwingUtilities.invokeLater(new Runnable() {
             
             @Override
