@@ -6,6 +6,8 @@
 package showdomilhao.models;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 /**
  *
@@ -15,10 +17,16 @@ public class Pergunta {
     private String texto;
     private ArrayList<Resposta> respostas;
     private final int numRespostas = 4;
+    private long seed;
     
     public Pergunta (String texto) {
         this.texto = texto;
         this.respostas = null;
+        this.seed = 0;
+    }
+    
+    public void setSeed() {
+        this.seed = System.nanoTime();
     }
     
     public Pergunta (String texto, ArrayList<Resposta> respostas) throws Exception {
@@ -27,6 +35,10 @@ public class Pergunta {
             this.respostas = respostas;
         } else {
             throw new Exception("Muitas respostas.");
+        }
+        
+        for (int i = 0; i < respostas.size(); i++) {
+            this.respostas.get(i).setId(i);
         }
     }
     
@@ -53,8 +65,21 @@ public class Pergunta {
      * @param i
      * @return 
      */
-    boolean respostaCerta(int i) throws Exception {
+    public boolean respostaCerta(int i) throws Exception {
         return i == this.respostaCerta();
     }
     
+    public String getTexto() {
+        return this.texto;
+    }
+    
+    public ArrayList<Resposta> getRespostas() {
+        return this.respostas;
+    }
+    
+    public ArrayList<Resposta> getRespostasEmbaralhadas() {
+        ArrayList<Resposta> embaralhada = (ArrayList<Resposta>) this.respostas.clone();
+        Collections.shuffle(embaralhada, new Random(this.seed));
+        return embaralhada;
+    }
 }

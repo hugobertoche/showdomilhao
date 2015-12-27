@@ -12,17 +12,27 @@ package showdomilhao.models;
 public class Resposta {
     private final String texto;
     private final boolean certa;
+    private int idResposta;
     
     public Resposta (String texto, boolean certa) {
         this.certa = certa;
         this.texto = texto;
+        this.idResposta = -1;
     };
     
-    String getTexto() {
+    public String getTexto() {
         return this.texto;
     }
     
-    boolean getCerta() {
+    public boolean getCerta() {
         return this.certa;
+    }
+    
+    public void setId(int id) {
+        this.idResposta = id;
+    }
+    
+    public int getId() {
+        return this.idResposta;
     }
 }
