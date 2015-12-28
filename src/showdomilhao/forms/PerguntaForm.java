@@ -5,6 +5,9 @@
  */
 package showdomilhao.forms;
 
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import showdomilhao.models.Jogo;
@@ -46,6 +49,8 @@ public class PerguntaForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Show do milhao");
@@ -59,6 +64,11 @@ public class PerguntaForm extends javax.swing.JFrame {
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -105,6 +115,20 @@ public class PerguntaForm extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("Pular");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("Usar cartas");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -130,7 +154,11 @@ public class PerguntaForm extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel1))
-                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jButton5, javax.swing.GroupLayout.Alignment.TRAILING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton7)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -147,8 +175,8 @@ public class PerguntaForm extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jButton5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(perguntaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addComponent(perguntaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
@@ -156,6 +184,10 @@ public class PerguntaForm extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7))
                 .addContainerGap())
         );
 
@@ -189,6 +221,72 @@ public class PerguntaForm extends javax.swing.JFrame {
         new RankingFrame(jogo).setVisible(true);
     }//GEN-LAST:event_jButton5MouseClicked
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        boolean pulou = this.jogo.pular();
+        if (pulou) {
+            this.jButton6.setEnabled(false);
+        }
+        
+        this.redesenhar();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void removeRespostas(int respostas) throws Exception {
+        if (respostas == 0)
+            return;
+        
+        int cartaInt = new Random().nextInt(4);
+        int idResposta = this.jogo.getPerguntaDaVez().getRespostasEmbaralhadas().get(cartaInt).getId();
+        boolean respostaCerta = this.jogo.getPerguntaDaVez().respostaCerta(idResposta);
+        
+        if (!respostaCerta) {
+            boolean removida = this.jogo.getPerguntaDaVez().getRespostasEmbaralhadas().get(cartaInt).getRemovida();
+            if (removida) {
+                removeRespostas(respostas);
+            } else {
+                this.jogo.getPerguntaDaVez().getRespostasEmbaralhadas().get(cartaInt).setRemovida(true);
+                switch (cartaInt) {
+                    case 0: this.jButton1.setEnabled(false); break;
+                    case 1: this.jButton2.setEnabled(false); break;
+                    case 2: this.jButton3.setEnabled(false); break;
+                    default: this.jButton4.setEnabled(false); break;
+                }
+                removeRespostas(--respostas);
+            }
+        } else {
+            removeRespostas(respostas);
+        }
+    }
+    
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        boolean cartas = this.jogo.getCartas();
+        if (!cartas) {
+            Random carta = new Random();
+            int cartaInt = carta.nextInt(4);
+            String cartaStr;
+            switch(cartaInt) {
+                case 1: cartaStr = "A"; break;
+                case 2: cartaStr = "2"; break;
+                case 3: cartaStr = "3"; break;
+                default: cartaStr = "K";
+            }
+            
+            JOptionPane.showMessageDialog(null, "Voce tirou o " + cartaStr + ", serao removidas " + cartaInt + " respostas.");
+            
+            try {
+                removeRespostas(cartaInt);
+            } catch (Exception ex) {
+                Logger.getLogger(PerguntaForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+            this.jButton7.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void checaRecomeco(int recomecar) {
         if (recomecar == 0) {
                 this.jogo = new Jogo();
@@ -211,6 +309,10 @@ public class PerguntaForm extends javax.swing.JFrame {
         int idResposta = this.jogo.getPerguntaDaVez().getRespostasEmbaralhadas().get(resposta).getId();
         this.jogo.responder(idResposta);
         
+        this.redesenhar();
+    }
+    
+    private void redesenhar () {
         this.jLabel1.setText(this.jogo.getPontos() +  "");
         this.jLabel4.setText((this.jogo.getPerguntasRespondidas() + 1) + " de " + (this.jogo.countPerguntas() + (this.jogo.getPerguntasRespondidas() + 1)));
         
@@ -239,6 +341,8 @@ public class PerguntaForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -13,6 +13,7 @@ public class Resposta {
     private final String texto;
     private final boolean certa;
     private int idResposta;
+    private boolean removida = false;
     
     public Resposta (String texto, boolean certa) {
         this.certa = certa;
@@ -34,5 +35,13 @@ public class Resposta {
     
     public int getId() {
         return this.idResposta;
+    }
+    
+    public boolean getRemovida() {
+        return this.removida;
+    }
+    
+    public void setRemovida(boolean removida) {
+        this.removida = removida;
     }
 }

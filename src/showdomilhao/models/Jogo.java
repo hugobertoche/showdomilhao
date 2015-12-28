@@ -24,6 +24,8 @@ public class Jogo {
     private int perguntasRespondidas;
     private String jogador;
     private Ranking ranking;
+    private boolean pulou = false;
+    private boolean cartas = false;
     
     public static enum StatusJogo {
         EM_ANDAMENTO, PERDIDO, GANHO
@@ -114,5 +116,29 @@ public class Jogo {
         } else {
             setPerguntaDaVez();
         }
+    }
+    
+    public boolean pular() {
+        if (!this.pulou) {
+            this.incrementPerguntasRespondidas();
+            this.pulou = true;
+            setPerguntaDaVez();
+            return true;
+        } else {
+            return false;
+        }
+        
+    }
+    
+    public boolean getPulou() {
+        return this.pulou;
+    }
+    
+    public boolean getCartas() {
+        return this.cartas;
+    }
+    
+    public void cartas() {
+        this.cartas = true;
     }
 }
