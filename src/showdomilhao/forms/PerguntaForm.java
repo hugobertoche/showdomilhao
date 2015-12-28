@@ -87,13 +87,18 @@ public class PerguntaForm extends javax.swing.JFrame {
 
         jLabel2.setText("Pontos:");
 
-        jLabel3.setText("Pergunta No:");
+        jLabel3.setText("Pergunta:");
 
-        jLabel4.setText("" + (this.jogo.getPerguntasRespondidas() + 1));
+        jLabel4.setText("" + (this.jogo.getPerguntasRespondidas() + 1) + " de " + (this.jogo.countPerguntas() + (this.jogo.getPerguntasRespondidas() + 1)));
 
         jLabel5.setText("Jogador: " + this.jogo.getJogador());
 
         jButton5.setText("Ver ranking");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -180,6 +185,10 @@ public class PerguntaForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        new RankingFrame(jogo).setVisible(true);
+    }//GEN-LAST:event_jButton5MouseClicked
+
     private void checaRecomeco(int recomecar) {
         if (recomecar == 0) {
                 this.jogo = new Jogo();
@@ -203,7 +212,7 @@ public class PerguntaForm extends javax.swing.JFrame {
         this.jogo.responder(idResposta);
         
         this.jLabel1.setText(this.jogo.getPontos() +  "");
-        this.jLabel4.setText(this.jogo.getPerguntasRespondidas() + 1 + "");
+        this.jLabel4.setText((this.jogo.getPerguntasRespondidas() + 1) + " de " + (this.jogo.countPerguntas() + (this.jogo.getPerguntasRespondidas() + 1)));
         
         if (this.jogo.getStatus() == Jogo.StatusJogo.EM_ANDAMENTO) {
             this.jButton1.setText(this.jogo.getPerguntaDaVez().getRespostasEmbaralhadas().get(0).getTexto());
@@ -214,9 +223,13 @@ public class PerguntaForm extends javax.swing.JFrame {
             this.perguntaLabel.setText(this.jogo.getPerguntaDaVez().getTexto());
         } else if (this.jogo.getStatus() == Jogo.StatusJogo.GANHO) {
             // ganhou o jogo
-            JOptionPane.showMessageDialog(null, "Ganhou o jogo.");
+            int recomecar = JOptionPane.showConfirmDialog(null, "Você ganhou o jogo, deseja jogar novamente?");
+            checaRecomeco(recomecar);
+            return;
         } else if (this.jogo.getStatus() == Jogo.StatusJogo.PERDIDO) {
-            JOptionPane.showMessageDialog(null, "Perdeu o jogo.");
+            int recomecar = JOptionPane.showConfirmDialog(null, "Você perdeu o jogo, deseja jogar novamente?");
+            checaRecomeco(recomecar);
+            return;
         }
     }
 

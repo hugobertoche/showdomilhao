@@ -11,5 +11,5 @@ package showdomilhao.models;
  */
 public class RankItem {
     public String jogador;
-    public int pontuacao;
+    public long pontuacao;
 }

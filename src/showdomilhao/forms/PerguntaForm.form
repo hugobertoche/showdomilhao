@@ -153,13 +153,13 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pergunta No:"/>
+        <Property name="text" type="java.lang.String" value="Pergunta:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="&quot;&quot; + (this.jogo.getPerguntasRespondidas() + 1)" type="code"/>
+          <Connection code="&quot;&quot; + (this.jogo.getPerguntasRespondidas() + 1) + &quot; de &quot; + (this.jogo.countPerguntas() + (this.jogo.getPerguntasRespondidas() + 1))" type="code"/>
         </Property>
       </Properties>
     </Component>
@@ -175,6 +175,7 @@
         <Property name="text" type="java.lang.String" value="Ver ranking"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton5MouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
       </Events>
     </Component>

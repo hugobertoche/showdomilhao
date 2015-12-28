@@ -15,6 +15,6 @@ import showdomilhao.models.RankItem;
 public class RankingItemComparator implements Comparator<RankItem>{
     @Override
     public int compare(RankItem a, RankItem b) {
-        return a.pontuacao < b.pontuacao ? -1 : a.pontuacao == b.pontuacao ? 0 : 1;
+        return a.pontuacao > b.pontuacao ? -1 : a.pontuacao == b.pontuacao ? 0 : 1;
     }
 }

@@ -33,6 +33,7 @@ public class Jogo {
     public Jogo() {
         perguntas = new PerguntaDAO().read();
         ranking = new PontuacaoDAO().read();
+        ranking.sort();
         pontos = 0;
         perguntasRespondidas = 0;
         status = StatusJogo.EM_ANDAMENTO;
@@ -49,6 +50,10 @@ public class Jogo {
     
     public int getPerguntasRespondidas() {
         return this.perguntasRespondidas;
+    }
+    
+    public int countPerguntas() {
+        return this.perguntas.size();
     }
     
     public int getPontos() {
@@ -84,7 +89,8 @@ public class Jogo {
     }
     
     public void salvarPontuacao() {
-        
+        this.getRanking().add(this.jogador, this.pontos);
+        new PontuacaoDAO().save(this.getRanking());
     }
     
     public void responder(int i) {
@@ -94,21 +100,19 @@ public class Jogo {
                 this.pontos += (1000 + (this.pontos * 2)) / 10;
             } else {
                 this.setStatus(StatusJogo.PERDIDO);
-                return;
             }
             
-            if (this.perguntas.size() == 0) {
+            if (this.perguntas.size() == 0 && this.status == StatusJogo.EM_ANDAMENTO) {
                 this.setStatus(StatusJogo.GANHO);
-                return;
             }
-            setPerguntaDaVez();
-            this.setStatus(StatusJogo.EM_ANDAMENTO);
         } catch (Exception ex) {
             Logger.getLogger(Jogo.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         if (this.status != StatusJogo.EM_ANDAMENTO) {
             this.salvarPontuacao();
+        } else {
+            setPerguntaDaVez();
         }
     }
 }

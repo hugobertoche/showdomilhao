@@ -25,12 +25,21 @@ public class Ranking {
         ranking = list;
     }
     
-    public void insert(String jogador, int pontuacao) {
+    public void add(RankItem rank) {
+        this.ranking.add(rank);
+        ranking.sort(new RankingItemComparator());
+    }
+    
+    public void add(String jogador, int pontuacao) {
         RankItem novoRegistro = new RankItem();
         novoRegistro.jogador = jogador;
         novoRegistro.pontuacao = pontuacao;
         ranking.add(novoRegistro);
         ranking.sort(new RankingItemComparator());
+    }
+    
+    public void sort() {
+        this.ranking.sort(new RankingItemComparator());
     }
     
     public ArrayList<RankItem> getRanking() {
