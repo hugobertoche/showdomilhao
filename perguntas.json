@@ -1,44 +1,275 @@
 {
     "perguntas": [
         {
-            "texto": "Quem descobriu o Brasil?",
+            "texto": "O mmc entre 24 e 30 é:",
             "respostas": [
                 {
                     "certa": true,
-                    "texto": "Pedro Alvares Cabral"
+                    "texto": "90"
                 },
                 {
                     "certa": false,
-                    "texto": "Cristovao Colombo"
+                    "texto": "120"
                 },
                 {
                     "certa": false,
-                    "texto": "Dilma Roussef"
+                    "texto": "60"
                 },
                 {
                     "certa": false,
-                    "texto": "Louis Armstrong"
+                    "texto": "240"
                 }
             ]
         },
         {
-            "texto": "Quem descobriu o Brasil 2?",
+            "texto": "O produto 8,25x7,4 é igual a:",
             "respostas": [
                 {
                     "certa": true,
-                    "texto": "Pedro Alvares Cabral"
+                    "texto": "61,05"
                 },
                 {
                     "certa": false,
-                    "texto": "Cristovao Colombo"
+                    "texto": "62,055"
                 },
                 {
                     "certa": false,
-                    "texto": "Dilma Roussef"
+                    "texto": "62,155"
                 },
                 {
                     "certa": false,
-                    "texto": "Louis Armstrong"
+                    "texto": "63,22"
+                }
+            ]
+        },
+        {
+            "texto": "Se 2 kg de bacalhau custam R$25,00, qual será o preço de 1,4kg de bacalhau:",
+            "respostas": [
+                {
+                    "certa": false,
+                    "texto": "R$12,50"
+                },
+                {
+                    "certa": false,
+                    "texto": "R$13,00"
+                },
+                {
+                    "certa": true,
+                    "texto": "R$17,50"
+                },
+                {
+                    "certa": false,
+                    "texto": "R$19,00"
+                }
+            ]
+        }
+        {
+            "texto": "No máximo, quantas caixas de 240 kg devem ser colocadas num elevador que comporta carga de até 1 tonelada?",
+            "respostas": [
+                {
+                    "certa": false,
+                    "texto": "7"
+                },
+                {
+                    "certa": false,
+                    "texto": "6"
+                },
+                {
+                    "certa": false,
+                    "texto": "5"
+                },
+                {
+                    "certa": true,
+                    "texto": "4"
+                }
+            ]
+        },
+        {
+            "texto": "Resolvendo-se a equação 8m-5+2m=7, obtém-se:",
+            "respostas": [
+                {
+                    "certa": false,
+                    "texto": "m = 3/2"
+                },
+                {
+                    "certa": true,
+                    "texto": "m = 6/5"
+                },
+                {
+                    "certa": false,
+                    "texto": "m = 1/5"
+                },
+                {
+                    "certa": false,
+                    "texto": "m = 1/2"
+                }
+            ]
+        },
+        {
+            "texto": "Resolvendo-se a equação 2.(x+4)=4x+11, obtém-se:",
+            "respostas": [
+                {
+                    "certa": false,
+                    "texto": "x = -0,5"
+                },
+                {
+                    "certa": true,
+                    "texto": "x = -1,5"
+                },
+                {
+                    "certa": false,
+                    "texto": "x = -2,4"
+                },
+                {
+                    "certa": false,
+                    "texto": "x = 1,2"
+                }
+            ]
+        },
+        {
+            "texto": "Um aluguel de R$ 550,00 sofreu um aumento de 18%. Ele passou a valer:",
+            "respostas": [
+                {
+                    "certa": false,
+                    "texto": "R$504,00"
+                },
+                {
+                    "certa": false,
+                    "texto": "R$673,00"
+                },
+                {
+                    "certa": false,
+                    "texto": "R$612,00"
+                },
+                {
+                    "certa": true,
+                    "texto": "R$649,00"
+                }
+            ]
+        },
+        {
+            "texto": "Uma área de 2,5km2 tem:",
+            "respostas": [
+                {
+                    "certa": false,
+                    "texto": "25000m²"
+                },
+                {
+                    "certa": true,
+                    "texto": "250000m²"
+                },
+                {
+                    "certa": false,
+                    "texto": "2500000m²"
+                },
+                {
+                    "certa": false,
+                    "texto": "25000000m²"
+                }
+            ]
+        },
+        {
+            "texto": "Quantos ladrilhos quadrados com 30 cm de lado são necessários para ladrilhar uma área de 4,5 m2?",
+            "respostas": [
+                {
+                    "certa": false,
+                    "texto": "40"
+                },
+                {
+                    "certa": true,
+                    "texto": "50"
+                },
+                {
+                    "certa": false,
+                    "texto": "55"
+                },
+                {
+                    "certa": false,
+                    "texto": "45"
+                }
+            ]
+        },
+        {
+            "texto": "Calculando-se –27 + (-32) +50, obtém-se:",
+            "respostas": [
+                {
+                    "certa": true,
+                    "texto": "-9"
+                },
+                {
+                    "certa": false,
+                    "texto": "-5"
+                },
+                {
+                    "certa": false,
+                    "texto": "-4"
+                },
+                {
+                    "certa": false,
+                    "texto": "-1"
+                }
+            ]
+        },
+        {
+            "texto": "Os três sets de uma partida de vôlei duraram, respectivamente, 54min 20s, 1h 8min 40s e 1h 12min. A partida durou:",
+            "respostas": [
+                {
+                    "certa": false,
+                    "texto": "2h 14min 60s"
+                },
+                {
+                    "certa": true,
+                    "texto": "3h 15min"
+                },
+                {
+                    "certa": false,
+                    "texto": "3h 16min"
+                },
+                {
+                    "certa": false,
+                    "texto": "3h 16min 60s"
+                }
+            ]
+        },
+        {
+            "texto": "Num deserto, um comprimento de 4 m aparece com 2 cm. A escala desse desenho é:",
+            "respostas": [
+                {
+                    "certa": false,
+                    "texto": "1 para 2"
+                },
+                {
+                    "certa": false,
+                    "texto": "1 para 20"
+                },
+                {
+                    "certa": true,
+                    "texto": "1 para 200"
+                },
+                {
+                    "certa": false,
+                    "texto": "1 para 2000"
+                }
+            ]
+        },
+        {
+            "texto": "Simplificando a fórmula: F=a-2+3a+5.(2a-1), obtém-se:",
+            "respostas": [
+                {
+                    "certa": false,
+                    "texto": "F = 3a – 8"
+                },
+                {
+                    "certa": false,
+                    "texto": "F = 14a - 8"
+                },
+                {
+                    "certa": false,
+                    "texto": "F = 10a - 1"
+                },
+                {
+                    "certa": true,
+                    "texto": "F = 14a - 7"
                 }
             ]
         }
