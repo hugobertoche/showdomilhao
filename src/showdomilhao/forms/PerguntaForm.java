@@ -309,6 +309,11 @@ public class PerguntaForm extends javax.swing.JFrame {
         int idResposta = this.jogo.getPerguntaDaVez().getRespostasEmbaralhadas().get(resposta).getId();
         this.jogo.responder(idResposta);
         
+        this.jButton1.setEnabled(true);
+        this.jButton2.setEnabled(true);
+        this.jButton3.setEnabled(true);
+        this.jButton4.setEnabled(true);
+        
         this.redesenhar();
     }
     
